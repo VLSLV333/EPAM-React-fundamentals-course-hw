@@ -1,0 +1,33 @@
+.article {
+    border: 2px solid lightseagreen;
+    margin: 2.5% 0;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.article h2 {
+    margin: 0;
+}
+
+.first {
+    width: 75rem;
+}
+
+.second {
+    width: 20rem;
+    margin: 0 3rem 0 0;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    margin: 0 3rem 0 0;
+}
+
+.short {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
