@@ -3,7 +3,14 @@ import useInput from '../../hooks/use-input';
 
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
-import { mockedAuthorsList, mockedCoursesList } from '../../constants';
+import {
+	mockedAuthorsList,
+	mockedCoursesList,
+	createCourseButtonText,
+	createAuthorButtonText,
+	addAuthorButtonText,
+	removeAuthorButtonText,
+} from '../../constants';
 import pipeDuration from '../../helpers/pipeDuration';
 import dateGenerator from '../../helpers/dateGenerator';
 import removeDuplicates from '../../helpers/removeDuplicates';
@@ -105,11 +112,13 @@ const CreateCourse = ({ swap }) => {
 		event.preventDefault();
 
 		if (thisCourseAuthors.length < 1) {
+			alert('Please, fill in all fields');
 			setTriedToSubmit(true);
 			return;
 		}
 
 		if (!formValid) {
+			alert('Please, fill in all fields');
 			return;
 		}
 
@@ -132,9 +141,9 @@ const CreateCourse = ({ swap }) => {
 
 	const stringAfterDuration = durationConvertedObject
 		? `${
-				durationConvertedObject.hours === 0
+				durationConvertedObject.hours === '00'
 					? 'minutes'
-					: durationConvertedObject.hours === 1
+					: durationConvertedObject.hours === '01'
 					? 'hour'
 					: 'hours'
 		  }`
@@ -147,12 +156,7 @@ const CreateCourse = ({ swap }) => {
 
 	return (
 		<form className={style.form} onSubmit={formHandler}>
-			<label className={style.title} htmlFor='title'>
-				Title
-			</label>
-			<div
-				className={titleHasError ? style.createCourseError : style.createCourse}
-			>
+			<div className={style.createCourse}>
 				<Input
 					labelText={'Title'}
 					placeholderText={'Enter title...'}
@@ -160,8 +164,9 @@ const CreateCourse = ({ swap }) => {
 					value={titleValue}
 					onChange={titleChangeHandler}
 					onBlur={titleBlurHandler}
+					error={titleHasError}
 				/>
-				<Button buttonText={'Create Course'} />
+				<Button buttonText={createCourseButtonText} />
 			</div>
 			{titleHasError && (
 				<p className={style.errorMessage}> Please, enter valid Title</p>
@@ -185,17 +190,8 @@ const CreateCourse = ({ swap }) => {
 			<fieldset className={style.fieldset}>
 				<div className={style.allSections}>
 					<div className={style.inputSections}>
-						<section
-							className={
-								authorNameHasError
-									? style.firstSectionError
-									: style.firstSection
-							}
-						>
+						<section className={style.firstSection}>
 							<h3>Add author</h3>
-							<label htmlFor='author' className={style.alignLeft}>
-								Author name
-							</label>
 							<Input
 								labelText={'Author name'}
 								placeholderText={'Enter author name...'}
@@ -204,6 +200,7 @@ const CreateCourse = ({ swap }) => {
 								onChange={authorNameInputHandler}
 								onBlur={authorNameBlurHandler}
 								required={false}
+								error={authorNameHasError}
 							/>
 							{authorNameHasError && (
 								<p className={style.errorMessage}>
@@ -211,16 +208,13 @@ const CreateCourse = ({ swap }) => {
 								</p>
 							)}
 							<Button
-								buttonText={'Create author'}
+								buttonText={createAuthorButtonText}
 								type='button'
 								onClick={createAuthorHandler}
 							/>
 						</section>
 						<section className={style.secondSection}>
 							<h3>Duration</h3>
-							<label className={style.alignLeft} htmlFor='duration'>
-								Duration
-							</label>
 							<Input
 								labelText={'Duration'}
 								placeholderText={'Enter duration in minutes...'}
@@ -229,6 +223,7 @@ const CreateCourse = ({ swap }) => {
 								onChange={durationChangeHandler}
 								value={durationValue}
 								onBlur={durationBlurHandler}
+								error={durationHasError}
 							/>
 							{durationHasError && (
 								<p className={style.errorMessage}>
@@ -248,7 +243,7 @@ const CreateCourse = ({ swap }) => {
 									<li key={auth.id}>
 										<p>{auth.name}</p>
 										<Button
-											buttonText={'Add author'}
+											buttonText={addAuthorButtonText}
 											type='button'
 											onClick={() => addAuthorHandler(auth)}
 										/>
@@ -268,7 +263,7 @@ const CreateCourse = ({ swap }) => {
 									<li key={auth.id}>
 										<p>{auth.name}</p>
 										<Button
-											buttonText={'Remove author'}
+											buttonText={removeAuthorButtonText}
 											type='button'
 											onClick={() => removeAuthorHandler(auth)}
 										/>

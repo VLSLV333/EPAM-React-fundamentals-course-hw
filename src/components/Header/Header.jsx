@@ -1,5 +1,6 @@
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
+import { headerButtonText } from '../../constants';
 
 import style from './Header.module.css';
 
@@ -9,7 +10,7 @@ const Header = () => {
 			<Logo />
 			<div className={style.user}>
 				<p>Julia</p>
-				<Button buttonText='Logout' />
+				<Button buttonText={headerButtonText} />
 			</div>
 		</header>
 	);

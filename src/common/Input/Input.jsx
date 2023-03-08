@@ -8,11 +8,18 @@ const Input = ({
 	type = 'text',
 	required = true,
 	onBlur,
+	labelText,
+	error,
 }) => {
 	return (
-		<>
+		<div className={style.div}>
+			{labelText && (
+				<label className={error ? style.labError : style.lab} htmlFor={forHtml}>
+					{labelText}
+				</label>
+			)}
 			<input
-				className={style.inp}
+				className={error ? style.inpError : style.inp}
 				id={forHtml}
 				onChange={onChange}
 				placeholder={placeholderText}
@@ -21,7 +28,7 @@ const Input = ({
 				required={required}
 				onBlur={onBlur}
 			/>
-		</>
+		</div>
 	);
 };
 

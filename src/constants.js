@@ -52,3 +52,23 @@ export const mockedAuthorsList = [
 		name: 'Valentina Larina',
 	},
 ];
+
+const courseCartButtonText = 'Show course';
+const searchBarButtonText = 'Search';
+const addNewCourseButtonText = 'Add new course';
+const headerButtonText = 'Logout';
+const createCourseButtonText = 'Create Course';
+const createAuthorButtonText = 'Create author';
+const addAuthorButtonText = 'Add author';
+const removeAuthorButtonText = 'Remove author';
+
+export {
+	courseCartButtonText,
+	searchBarButtonText,
+	addNewCourseButtonText,
+	headerButtonText,
+	createCourseButtonText,
+	createAuthorButtonText,
+	addAuthorButtonText,
+	removeAuthorButtonText,
+};

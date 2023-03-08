@@ -1,8 +1,31 @@
+.div label, .div input {
+    border-radius: 5px;
+}
+
 .inp {
-    padding: 0.3em;
-    border: 2px solid orange;
+	padding: 0.3em;
+	border: 2px solid orange;
 }
 
 .inp:focus {
-    outline-color: rgb(245, 202, 121);
+	outline-color: rgb(245, 202, 121);
+}
+.div {
+	display: flex;
+	flex-direction: column;
+}
+
+.lab {
+	text-align: start;
+}
+
+.labError {
+	text-align: start;
+	/* color: red; */
+}
+
+.inpError {
+	padding: 0.3em;
+	border: 2px solid red;
+	outline-color: red;
 }

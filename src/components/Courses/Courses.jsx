@@ -5,6 +5,7 @@ import CourseCard from './components/CourseCard/CourseCard';
 import Button from '../../common/Button/Button';
 
 import { mockedCoursesList } from '../../constants';
+import { addNewCourseButtonText } from '../../constants';
 
 import style from './Courses.module.css';
 
@@ -29,7 +30,7 @@ const Courses = ({ swap }) => {
 		<>
 			<div className={style.topSection}>
 				<SearchBar search={searchHandler} />
-				<Button buttonText={'Add new course'} onClick={swap} />
+				<Button buttonText={addNewCourseButtonText} onClick={swap} />
 			</div>
 			{courseList.map((course) => (
 				<CourseCard

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import Button from '../../../../common/Button/Button';
 
+import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';
+import { searchBarButtonText } from '../../../../constants';
 
 import style from './SearchBar.module.css';
 
@@ -29,7 +30,7 @@ const SearchBar = ({ search }) => {
 				onChange={searchInputHandler}
 				required={false}
 			/>
-			<Button buttonText={'Search'} onClick={searchButtonHandler} />
+			<Button buttonText={searchBarButtonText} onClick={searchButtonHandler} />
 		</div>
 	);
 };

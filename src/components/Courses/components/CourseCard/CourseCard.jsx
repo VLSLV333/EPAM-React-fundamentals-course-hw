@@ -1,5 +1,7 @@
-import Button from '../../../../common/Button/Button';
 import { mockedAuthorsList } from '../../../../constants';
+import { courseCartButtonText } from '../../../../constants';
+
+import Button from '../../../../common/Button/Button';
 import pipeDuration from '../../../../helpers/pipeDuration';
 
 import style from './CourseCard.module.css';
@@ -41,7 +43,7 @@ const CourseCard = ({ title, duration, creation, description, authors }) => {
 					<b>Created:</b> {creationFormated}
 				</p>
 				<div className={style.btn}>
-					<Button buttonText={'Show course'} />
+					<Button buttonText={courseCartButtonText} />
 				</div>
 			</div>
 		</article>
