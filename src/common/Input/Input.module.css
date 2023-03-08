@@ -1,0 +1,8 @@
+.inp {
+    padding: 0.3em;
+    border: 2px solid orange;
+}
+
+.inp:focus {
+    outline-color: rgb(245, 202, 121);
+}

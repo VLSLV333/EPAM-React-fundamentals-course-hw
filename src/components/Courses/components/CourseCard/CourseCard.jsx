@@ -1,17 +1,11 @@
 import Button from '../../../../common/Button/Button';
-
 import { mockedAuthorsList } from '../../../../constants';
+import pipeDuration from '../../../../helpers/pipeDuration';
 
 import style from './CourseCard.module.css';
 
 const CourseCard = ({ title, duration, creation, description, authors }) => {
-	const toHoursAndMinutes = (totalMinutes) => {
-		const hours = Math.floor(totalMinutes / 60);
-		const minutes = totalMinutes % 60;
-		return { hours, minutes };
-	};
-
-	const durationObject = toHoursAndMinutes(duration);
+	const durationObject = pipeDuration(duration);
 
 	const courseAuthorsArray = [];
 
