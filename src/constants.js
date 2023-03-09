@@ -53,7 +53,7 @@ export const mockedAuthorsList = [
 	},
 ];
 
-const courseCartButtonText = 'Show course';
+const courseCardButtonText = 'Show course';
 const searchBarButtonText = 'Search';
 const addNewCourseButtonText = 'Add new course';
 const headerButtonText = 'Logout';
@@ -63,7 +63,7 @@ const addAuthorButtonText = 'Add author';
 const removeAuthorButtonText = 'Remove author';
 
 export {
-	courseCartButtonText,
+	courseCardButtonText,
 	searchBarButtonText,
 	addNewCourseButtonText,
 	headerButtonText,

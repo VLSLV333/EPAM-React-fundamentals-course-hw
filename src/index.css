@@ -16,3 +16,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  border: 2px solid lightblue;
+  padding: 0 1%;
+  min-height: calc(100vh - 4.5rem)  ;
+}
+
+.errorMessage {
+	margin: 0.5rem 0;
+	color: red;
+}

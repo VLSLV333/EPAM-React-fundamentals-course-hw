@@ -1,27 +1,33 @@
-import { mockedAuthorsList } from '../../../../constants';
-import { courseCartButtonText } from '../../../../constants';
+import { useNavigate } from 'react-router-dom';
+
+import { courseCardButtonText } from '../../../../constants';
 
 import Button from '../../../../common/Button/Button';
 import pipeDuration from '../../../../helpers/pipeDuration';
+import creationDateFormater from '../../../../helpers/creationDateFormater';
+import getAuthorsNamesArray from '../../../../helpers/getAuthorsNamesArray';
 
 import style from './CourseCard.module.css';
 
-const CourseCard = ({ title, duration, creation, description, authors }) => {
+const CourseCard = ({
+	title,
+	duration,
+	creation,
+	description,
+	authors,
+	id,
+}) => {
 	const durationObject = pipeDuration(duration);
 
-	const courseAuthorsArray = [];
+	const creationFormated = creationDateFormater(creation);
 
-	const creationFormated = creation.split('/').join('.');
+	const courseAuthors = getAuthorsNamesArray(authors).join(', ');
 
-	authors.forEach((id) =>
-		mockedAuthorsList.forEach((auth) => {
-			if (auth.id === id) {
-				courseAuthorsArray.push(auth.name);
-			}
-		})
-	);
+	const navigate = useNavigate();
 
-	const courseAuthors = courseAuthorsArray.join(', ');
+	const showCourseHandler = () => {
+		navigate(`${id}`);
+	};
 
 	return (
 		<article className={style.article}>
@@ -43,7 +49,10 @@ const CourseCard = ({ title, duration, creation, description, authors }) => {
 					<b>Created:</b> {creationFormated}
 				</p>
 				<div className={style.btn}>
-					<Button buttonText={courseCartButtonText} />
+					<Button
+						buttonText={courseCardButtonText}
+						onClick={showCourseHandler}
+					/>
 				</div>
 			</div>
 		</article>

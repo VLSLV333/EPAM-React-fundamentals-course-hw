@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { useState } from 'react';
 import useInput from '../../hooks/use-input';
 
@@ -17,7 +19,9 @@ import removeDuplicates from '../../helpers/removeDuplicates';
 
 import style from './CreateCourse.module.css';
 
-const CreateCourse = ({ swap }) => {
+const CreateCourse = () => {
+	const navigate = useNavigate();
+
 	const {
 		value: descriptionValue,
 		isValid: descriptionValid,
@@ -130,8 +134,7 @@ const CreateCourse = ({ swap }) => {
 			duration: +durationValue,
 			authors: thisCourseAuthors.map((obj) => obj.id),
 		});
-		swap();
-
+		navigate('/courses');
 		descriptionReset();
 		titleReset();
 		durationReset();
@@ -169,7 +172,7 @@ const CreateCourse = ({ swap }) => {
 				<Button buttonText={createCourseButtonText} />
 			</div>
 			{titleHasError && (
-				<p className={style.errorMessage}> Please, enter valid Title</p>
+				<p className='errorMessage'> Please, enter valid Title</p>
 			)}
 			<label className={style.descrTextArea} htmlFor='description'>
 				Decsription
@@ -185,7 +188,7 @@ const CreateCourse = ({ swap }) => {
 				onBlur={descriptionBlurHandler}
 			/>
 			{descriptionHasError && (
-				<p className={style.errorMessage}> Please, enter valid description</p>
+				<p className='errorMessage'> Please, enter valid description</p>
 			)}
 			<fieldset className={style.fieldset}>
 				<div className={style.allSections}>
@@ -203,9 +206,7 @@ const CreateCourse = ({ swap }) => {
 								error={authorNameHasError}
 							/>
 							{authorNameHasError && (
-								<p className={style.errorMessage}>
-									Please, enter valid author name
-								</p>
+								<p className='errorMessage'>Please, enter valid author name</p>
 							)}
 							<Button
 								buttonText={createAuthorButtonText}
@@ -226,7 +227,7 @@ const CreateCourse = ({ swap }) => {
 								error={durationHasError}
 							/>
 							{durationHasError && (
-								<p className={style.errorMessage}>
+								<p className='errorMessage'>
 									Please, enter valid duration (more than 0)
 								</p>
 							)}
@@ -252,7 +253,7 @@ const CreateCourse = ({ swap }) => {
 							</ul>
 						</section>
 						<section>
-							<h3 className={triedToSubmit ? style.errorMessage : ''}>
+							<h3 className={triedToSubmit ? 'errorMessage' : ''}>
 								Course authors
 							</h3>
 							<ul>
@@ -270,7 +271,7 @@ const CreateCourse = ({ swap }) => {
 									</li>
 								))}
 								{triedToSubmit && (
-									<p className={style.errorMessage}>
+									<p className='errorMessage'>
 										Please, select atleast one author.
 									</p>
 								)}

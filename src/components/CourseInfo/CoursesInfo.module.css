@@ -1,0 +1,25 @@
+.section {
+    text-align: center;
+}
+
+.allInfo {
+    display: flex;
+    gap: 10rem;
+}
+
+.first {
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: start;
+}
+
+.second {
+    flex-grow: 1;
+    flex-basis: 0;
+    text-align: start;
+}
+
+.a {
+    text-decoration: none;
+    color: black;
+}

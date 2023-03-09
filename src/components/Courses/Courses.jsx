@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { useState } from 'react';
 
 import SearchBar from './components/SearchBar/SearchBar';
@@ -9,7 +11,13 @@ import { addNewCourseButtonText } from '../../constants';
 
 import style from './Courses.module.css';
 
-const Courses = ({ swap }) => {
+const Courses = () => {
+	const navigate = useNavigate();
+
+	const createCourseButtonHandler = () => {
+		navigate('/courses/add');
+	};
+
 	const [courseList, setCourseList] = useState(mockedCoursesList);
 
 	const searchHandler = (text) => {
@@ -30,7 +38,10 @@ const Courses = ({ swap }) => {
 		<>
 			<div className={style.topSection}>
 				<SearchBar search={searchHandler} />
-				<Button buttonText={addNewCourseButtonText} onClick={swap} />
+				<Button
+					buttonText={addNewCourseButtonText}
+					onClick={createCourseButtonHandler}
+				/>
 			</div>
 			{courseList.map((course) => (
 				<CourseCard
@@ -40,6 +51,7 @@ const Courses = ({ swap }) => {
 					description={course.description}
 					authors={course.authors}
 					key={course.id}
+					id={course.id}
 				/>
 			))}
 		</>
