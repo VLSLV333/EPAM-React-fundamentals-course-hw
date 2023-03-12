@@ -7,12 +7,15 @@ import CoursesInfoPage from './pages/CoursesInfoPage';
 import RegistrationPage, {
 	action as registrationAction,
 } from './pages/RegistrationPage';
-import LoginPage from './pages/LoginPage';
+import LoginPage, { action as loginAction } from './pages/LoginPage';
+import { tokenLoader } from './util/authentication';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <RootPage />,
+		loader: tokenLoader,
+		id: 'root',
 		children: [
 			{
 				index: true,
@@ -34,8 +37,7 @@ const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <LoginPage />,
-				// need TO CREATE LOGIN LOGIC
-				// action: test,
+				action: loginAction,
 			},
 		],
 	},

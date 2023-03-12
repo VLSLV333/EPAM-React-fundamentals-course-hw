@@ -24,7 +24,7 @@ const Login = () => {
 
 	return (
 		<div className={style.grid}>
-			<Form className={style.form}>
+			<Form className={style.form} method='post'>
 				{actionData.state?._isRedirect && (
 					<p className='successMessage'>
 						User successfully created. Please login :)
@@ -37,6 +37,7 @@ const Login = () => {
 					placeholderText={'Enter email'}
 					value={emailInput}
 					onChange={emailInputChangeHandler}
+					name={'email'}
 				/>
 				<Input
 					forHtml={'password'}
@@ -44,6 +45,7 @@ const Login = () => {
 					placeholderText={'Enter password'}
 					value={passwordInput}
 					onChange={passwordInputChangeHandler}
+					name={'password'}
 				/>
 				<Button buttonText={'Login'} />
 				<p>
