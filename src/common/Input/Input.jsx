@@ -10,6 +10,7 @@ const Input = ({
 	onBlur,
 	labelText,
 	error,
+	name,
 }) => {
 	return (
 		<div className={style.div}>
@@ -27,6 +28,7 @@ const Input = ({
 				type={type}
 				required={required}
 				onBlur={onBlur}
+				name={name}
 			/>
 		</div>
 	);

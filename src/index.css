@@ -27,3 +27,8 @@ main {
 	margin: 0.5rem 0;
 	color: red;
 }
+
+.successMessage {
+	margin: 0.5rem 0;
+	color: rgb(13, 197, 13);
+}

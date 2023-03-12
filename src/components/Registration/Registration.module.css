@@ -11,8 +11,22 @@
 .form button {
 	margin-top: 1.5rem;
 	padding: 0.5rem 0;
+	cursor: pointer;
+}
+
+.form button:disabled {
+	cursor: not-allowed;
 }
 
 .form input {
 	padding: 0.4rem 3.3rem 0.4rem 0.4rem;
+}
+
+.nav {
+	text-decoration: none;
+	color: rgb(16, 183, 239);
+}
+
+.form ul {
+	list-style-type: none;
 }

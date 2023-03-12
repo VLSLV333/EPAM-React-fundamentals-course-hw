@@ -1,4 +1,4 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, NavLink, useActionData } from 'react-router-dom';
 
 import Input from '../../common/Input/Input';
 
@@ -16,36 +16,47 @@ const Registration = () => {
 			);
 	};
 
+	const actionData = useActionData();
+
 	const {
 		value: nameInputValue,
-		// isValid: nameIsValid,
 		hasError: nameInputHasError,
+		isValid: nameInputValid,
 		valueChangeHadler: nameInputChangeHadler,
 		inputBlurHadler: nameInputBlurHadler,
-		// reset: nameInputReset,
 	} = useInput((value) => value.length > 1);
 
 	const {
 		value: emailInputValue,
-		// isValid: emailIsValid,
 		hasError: emailInputHasError,
+		isValid: emailInputValid,
 		valueChangeHadler: emailInputChangeHadler,
 		inputBlurHadler: emailInputBlurHadler,
-		// reset: emailInputReset,
 	} = useInput(validateEmail);
 
 	const {
 		value: passwordInputValue,
-		// isValid: passwordIsValid,
 		hasError: passwordInputHasError,
+		isValid: passwordInputValid,
 		valueChangeHadler: passwordInputChangeHadler,
 		inputBlurHadler: passwordInputBlurHadler,
-		// reset: passwordInputReset,
 	} = useInput((value) => value.length > 6);
+
+	const formNotValid =
+		!passwordInputValid || !emailInputValid || !nameInputValid;
 
 	return (
 		<div className={style.grid}>
-			<Form className={style.form}>
+			<Form method='post' className={style.form}>
+				{actionData && !actionData.successful && (
+					<ul>
+						{actionData.errors.map((err) => (
+							<li key={err} className='errorMessage'>
+								{err}
+							</li>
+						))}
+					</ul>
+				)}
 				<h2>Registration</h2>
 				<Input
 					forHtml={'name'}
@@ -55,6 +66,7 @@ const Registration = () => {
 					onChange={nameInputChangeHadler}
 					onBlur={nameInputBlurHadler}
 					error={nameInputHasError}
+					name='name'
 				/>
 				{nameInputHasError && (
 					<p className='errorMessage'>Please, enter valid name</p>
@@ -68,6 +80,7 @@ const Registration = () => {
 					onBlur={emailInputBlurHadler}
 					error={emailInputHasError}
 					type={'email'}
+					name='email'
 				/>
 				{emailInputHasError && (
 					<p className='errorMessage'>Please, enter valid email</p>
@@ -80,14 +93,17 @@ const Registration = () => {
 					onChange={passwordInputChangeHadler}
 					onBlur={passwordInputBlurHadler}
 					error={passwordInputHasError}
+					name='password'
 				/>
 				{passwordInputHasError && (
 					<p className='errorMessage'>Please, enter at least 7 characters</p>
 				)}
-				<Button buttonText={'Registration'} />
+				<Button buttonText={'Registration'} disabled={formNotValid} />
 				<p>
 					If you have an account you can{' '}
-					<Link className='errorMessage'>Login</Link>
+					<NavLink className={style.nav} to='/login'>
+						Login
+					</NavLink>
 				</p>
 			</Form>
 		</div>
@@ -95,7 +111,3 @@ const Registration = () => {
 };
 
 export default Registration;
-
-export function test() {
-	console.log('test');
-}

@@ -1,4 +1,4 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, NavLink, useLocation } from 'react-router-dom';
 
 import { useState } from 'react';
 
@@ -9,6 +9,7 @@ import style from './Login.module.css';
 import Button from '../../common/Button/Button';
 
 const Login = () => {
+	const actionData = useLocation();
 	const [emailInput, setEmailInput] = useState('');
 
 	const emailInputChangeHandler = (event) => {
@@ -24,6 +25,11 @@ const Login = () => {
 	return (
 		<div className={style.grid}>
 			<Form className={style.form}>
+				{actionData.state?._isRedirect && (
+					<p className='successMessage'>
+						User successfully created. Please login :)
+					</p>
+				)}
 				<h2>Login</h2>
 				<Input
 					forHtml={'email'}
@@ -42,7 +48,9 @@ const Login = () => {
 				<Button buttonText={'Login'} />
 				<p>
 					If you dont have an account yet you can{' '}
-					<Link className='errorMessage'>Register</Link>
+					<NavLink className={style.nav} to={'/registration'}>
+						Register
+					</NavLink>
 				</p>
 			</Form>
 		</div>

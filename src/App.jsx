@@ -4,10 +4,10 @@ import MainPage from './pages/MainPage';
 import CoursesPage from './pages/CoursesPage';
 import CreateCoursePage from './pages/CreateCoursePage';
 import CoursesInfoPage from './pages/CoursesInfoPage';
-import RegistrationPage from './pages/RegistrtionPage';
+import RegistrationPage, {
+	action as registrationAction,
+} from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
-
-// import { test } from './components/Registration/Registration';
 
 const router = createBrowserRouter([
 	{
@@ -29,8 +29,7 @@ const router = createBrowserRouter([
 			{
 				path: 'registration',
 				element: <RegistrationPage />,
-				// need TO CREATE FORM SUBMITION LOGIC
-				// action: test,
+				action: registrationAction,
 			},
 			{
 				path: 'login',
