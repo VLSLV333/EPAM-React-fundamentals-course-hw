@@ -9,7 +9,9 @@ import style from './Login.module.css';
 import Button from '../../common/Button/Button';
 
 const Login = () => {
-	const actionData = useLocation();
+	const location = useLocation();
+	const message = new URLSearchParams(location.search).get('message');
+
 	const [emailInput, setEmailInput] = useState('');
 
 	const emailInputChangeHandler = (event) => {
@@ -25,11 +27,7 @@ const Login = () => {
 	return (
 		<div className={style.grid}>
 			<Form className={style.form} method='post'>
-				{actionData.state?._isRedirect && (
-					<p className='successMessage'>
-						User successfully created. Please login :)
-					</p>
-				)}
+				{message && <p className='infoMessage'>{message}</p>}
 				<h2>Login</h2>
 				<Input
 					forHtml={'email'}

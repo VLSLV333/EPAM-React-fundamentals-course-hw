@@ -32,9 +32,6 @@ const action = async ({ request }) => {
 	localStorage.setItem('token', token);
 	localStorage.setItem('userName', userName);
 
-	// console.log(token);
-	// console.log(userName);
-
 	return redirect('/courses');
 };
 

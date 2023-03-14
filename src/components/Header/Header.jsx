@@ -4,27 +4,38 @@ import { headerButtonText } from '../../constants';
 
 import style from './Header.module.css';
 
-import { useNavigate, useRouteLoaderData } from 'react-router-dom';
+import { Form, useRouteLoaderData, useNavigate } from 'react-router-dom';
 
-import { logOut } from '../../util/authentication';
+import { useEffect } from 'react';
+
+let firstRender = true;
 
 const Header = () => {
-	// const { token, userName } = useRouteLoaderData('root');
-	const token = useRouteLoaderData('root');
+	const { token, userName } = useRouteLoaderData('root');
+
 	const navigate = useNavigate();
-	const buttonHandler = () => {
-		// console.log('here');
-		logOut();
-		navigate('/login');
-	};
+
+	useEffect(() => {
+		if (firstRender) {
+			function navigateToCourses() {
+				if (token && userName) {
+					navigate('/courses');
+				}
+			}
+			navigateToCourses();
+			firstRender = false;
+		}
+	}, [token, userName, navigate]);
+
 	return (
 		<header className={style.header}>
 			<Logo />
 			{token && (
 				<div className={style.user}>
-					{/* <p>{userName}</p> */}
-					<p>Julia</p>
-					<Button buttonText={headerButtonText} onClick={buttonHandler} />
+					<p>{userName}</p>
+					<Form method='post' action='/logout'>
+						<Button buttonText={headerButtonText} />
+					</Form>
 				</div>
 			)}
 		</header>

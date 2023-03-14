@@ -1,15 +1,23 @@
+import { redirect } from 'react-router-dom';
+
 export function getAuthInfo() {
 	const token = localStorage.getItem('token');
-	// const userName = localStorage.getItem('userName');
-	// return { token, userName };
-	return token;
+	const userName = localStorage.getItem('userName');
+	return { token, userName };
 }
 
 export function tokenLoader() {
 	return getAuthInfo();
 }
 
-export function logOut() {
-	localStorage.removeItem('token');
-	localStorage.removeItem('userName');
+export function checkIfAuthentificated() {
+	const { token } = getAuthInfo();
+
+	if (!token) {
+		return redirect(
+			'/login?message=You need to log in, to have access to that page'
+		);
+	}
+
+	return token;
 }

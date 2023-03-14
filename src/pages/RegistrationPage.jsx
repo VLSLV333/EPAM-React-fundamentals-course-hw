@@ -33,5 +33,5 @@ export async function action({ request }) {
 		throw json({ message: 'Could not register user.' }, { status: 500 });
 	}
 
-	return redirect('/login');
+	return redirect('/login?message=User was created. Please login :)');
 }

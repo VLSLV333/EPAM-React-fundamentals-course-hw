@@ -8,7 +8,9 @@ import RegistrationPage, {
 	action as registrationAction,
 } from './pages/RegistrationPage';
 import LoginPage, { action as loginAction } from './pages/LoginPage';
-import { tokenLoader } from './util/authentication';
+
+import { tokenLoader, checkIfAuthentificated } from './util/authentication';
+import { logOut } from './pages/LogoutPage';
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'courses',
+				loader: checkIfAuthentificated,
 				children: [
 					{ index: true, element: <CoursesPage /> },
 					{ path: ':courseId', element: <CoursesInfoPage /> },
@@ -38,6 +41,10 @@ const router = createBrowserRouter([
 				path: 'login',
 				element: <LoginPage />,
 				action: loginAction,
+			},
+			{
+				path: 'logout',
+				action: logOut,
 			},
 		],
 	},
