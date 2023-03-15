@@ -1,4 +1,4 @@
-import { Form, NavLink, useLocation } from 'react-router-dom';
+import { Form, NavLink, useLocation, useActionData } from 'react-router-dom';
 
 import { useState } from 'react';
 
@@ -9,6 +9,8 @@ import style from './Login.module.css';
 import Button from '../../common/Button/Button';
 
 const Login = () => {
+	const actionData = useActionData();
+
 	const location = useLocation();
 	const message = new URLSearchParams(location.search).get('message');
 
@@ -28,6 +30,9 @@ const Login = () => {
 		<div className={style.grid}>
 			<Form className={style.form} method='post'>
 				{message && <p className='infoMessage'>{message}</p>}
+				{actionData && !actionData.successful && (
+					<p className='errorMessage'>Wrong email or password :(</p>
+				)}
 				<h2>Login</h2>
 				<Input
 					forHtml={'email'}

@@ -1,4 +1,4 @@
-import { redirect } from 'react-router-dom';
+import { redirect, json } from 'react-router-dom';
 
 import Login from '../components/Login/Login';
 
@@ -9,30 +9,42 @@ const LoginPage = () => {
 export default LoginPage;
 
 const action = async ({ request }) => {
-	const dataFromForm = await request.formData();
+	try {
+		const dataFromForm = await request.formData();
 
-	const loginData = {
-		email: dataFromForm.get('email'),
-		password: dataFromForm.get('password'),
-	};
+		const loginData = {
+			email: dataFromForm.get('email'),
+			password: dataFromForm.get('password'),
+		};
 
-	const response = await fetch('http://localhost:4000/login', {
-		method: 'POST',
-		body: JSON.stringify(loginData),
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	});
+		const response = await fetch('http://localhost:4000/login', {
+			method: 'POST',
+			body: JSON.stringify(loginData),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
 
-	const responseData = await response.json();
+		if (response.status === 400) {
+			return response;
+		}
 
-	const token = responseData.result;
-	const userName = responseData.user.name;
+		if (!response.ok) {
+			throw json({ message: 'Could not login user.' }, { status: 500 });
+		}
 
-	localStorage.setItem('token', token);
-	localStorage.setItem('userName', userName);
+		const responseData = await response.json();
 
-	return redirect('/courses');
+		const token = responseData.result;
+		const userName = responseData.user.name;
+
+		localStorage.setItem('token', token);
+		localStorage.setItem('userName', userName);
+
+		return redirect('/courses');
+	} catch (err) {
+		throw json({ message: err.message }, { status: 501 });
+	}
 };
 
 export { action };

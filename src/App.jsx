@@ -11,6 +11,7 @@ import LoginPage, { action as loginAction } from './pages/LoginPage';
 
 import { tokenLoader, checkIfAuthentificated } from './util/authentication';
 import { logOut } from './pages/LogoutPage';
+import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
 	{
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
 		element: <RootPage />,
 		loader: tokenLoader,
 		id: 'root',
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				index: true,

@@ -1,0 +1,13 @@
+.grid {
+	display: grid;
+	height: 95vh;
+}
+
+.center {
+	margin: auto;
+}
+
+.center a {
+	text-decoration: none;
+	color: plum;
+}
