@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import { mockedCoursesList } from '../../constants';
-import pipeDuration from '../../helpers/pipeDuration';
 import getAuthorsNamesArray from '../../helpers/getAuthorsNamesArray';
 import creationDateFormater from '../../helpers/creationDateFormater';
+import pipeDuration from '../../helpers/pipeDuration';
+
+import { mockedCoursesList } from '../../constants';
 
 import style from './CoursesInfo.module.css';
 

@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
 
+import Button from '../../common/Button/Button';
 import SearchBar from './components/SearchBar/SearchBar';
 import CourseCard from './components/CourseCard/CourseCard';
-import Button from '../../common/Button/Button';
 
 import { mockedCoursesList } from '../../constants';
 import { addNewCourseButtonText } from '../../constants';

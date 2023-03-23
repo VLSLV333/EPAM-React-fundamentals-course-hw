@@ -2,9 +2,7 @@ import { json, redirect } from 'react-router-dom';
 
 import Registration from '../components/Registration/Registration';
 
-const RegistrationPage = () => {
-	return <Registration />;
-};
+const RegistrationPage = () => <Registration />;
 
 export default RegistrationPage;
 

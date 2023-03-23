@@ -1,11 +1,11 @@
 import { Form, NavLink, useActionData } from 'react-router-dom';
 
+import useInput from '../../hooks/use-input';
+
 import Input from '../../common/Input/Input';
+import Button from '../../common/Button/Button';
 
 import style from './Registration.module.css';
-
-import useInput from '../../hooks/use-input';
-import Button from '../../common/Button/Button';
 
 const Registration = () => {
 	const validateEmail = (email) => {

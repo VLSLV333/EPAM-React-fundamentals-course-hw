@@ -1,7 +1,5 @@
 import CreateCourse from '../components/CreateCourse/CreateCourse';
 
-const CreateCoursePage = () => {
-	return <CreateCourse />;
-};
+const CreateCoursePage = () => <CreateCourse />;
 
 export default CreateCoursePage;

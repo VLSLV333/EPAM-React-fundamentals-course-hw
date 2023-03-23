@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import { courseCardButtonText } from '../../../../constants';
-
 import Button from '../../../../common/Button/Button';
+
 import pipeDuration from '../../../../helpers/pipeDuration';
 import creationDateFormater from '../../../../helpers/creationDateFormater';
 import getAuthorsNamesArray from '../../../../helpers/getAuthorsNamesArray';
+
+import { courseCardButtonText } from '../../../../constants';
 
 import style from './CourseCard.module.css';
 

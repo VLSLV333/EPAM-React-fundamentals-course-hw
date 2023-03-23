@@ -1,10 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
+
 import useInput from '../../hooks/use-input';
 
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
+
+import pipeDuration from '../../helpers/pipeDuration';
+import dateGenerator from '../../helpers/dateGenerator';
+import removeDuplicates from '../../helpers/removeDuplicates';
+
 import {
 	mockedAuthorsList,
 	mockedCoursesList,
@@ -13,9 +18,6 @@ import {
 	addAuthorButtonText,
 	removeAuthorButtonText,
 } from '../../constants';
-import pipeDuration from '../../helpers/pipeDuration';
-import dateGenerator from '../../helpers/dateGenerator';
-import removeDuplicates from '../../helpers/removeDuplicates';
 
 import style from './CreateCourse.module.css';
 

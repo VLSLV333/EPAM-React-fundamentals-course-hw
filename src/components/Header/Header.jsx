@@ -1,12 +1,12 @@
+// import { Form, useRouteLoaderData, useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
+
 import Logo from './components/Logo/Logo';
 import Button from '../../common/Button/Button';
+
 // import { headerButtonText } from '../../constants';
 
 import style from './Header.module.css';
-
-// import { Form, useRouteLoaderData, useNavigate } from 'react-router-dom';
-
-// import { useEffect } from 'react';
 
 // let firstRender = true;
 
