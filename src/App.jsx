@@ -4,20 +4,20 @@ import MainPage from './pages/MainPage';
 import CoursesPage from './pages/CoursesPage';
 import CreateCoursePage from './pages/CreateCoursePage';
 import CoursesInfoPage from './pages/CoursesInfoPage';
-import RegistrationPage, {
-	action as registrationAction,
-} from './pages/RegistrationPage';
-import LoginPage, { action as loginAction } from './pages/LoginPage';
+// import RegistrationPage, {
+// 	action as registrationAction,
+// } from './pages/RegistrationPage';
+// import LoginPage, { action as loginAction } from './pages/LoginPage';
 
-import { tokenLoader, checkIfAuthentificated } from './util/authentication';
-import { logOut } from './pages/LogoutPage';
+// import { tokenLoader, checkIfAuthentificated } from './util/authentication';
+// import { logOut } from './pages/LogoutPage';
 import ErrorPage from './pages/ErrorPage';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <RootPage />,
-		loader: tokenLoader,
+		// loader: tokenLoader,
 		id: 'root',
 		errorElement: <ErrorPage />,
 		children: [
@@ -27,27 +27,27 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'courses',
-				loader: checkIfAuthentificated,
+				// loader: checkIfAuthentificated,
 				children: [
 					{ index: true, element: <CoursesPage /> },
 					{ path: ':courseId', element: <CoursesInfoPage /> },
 					{ path: 'add', element: <CreateCoursePage /> },
 				],
 			},
-			{
-				path: 'registration',
-				element: <RegistrationPage />,
-				action: registrationAction,
-			},
-			{
-				path: 'login',
-				element: <LoginPage />,
-				action: loginAction,
-			},
-			{
-				path: 'logout',
-				action: logOut,
-			},
+			// {
+			// 	path: 'registration',
+			// 	element: <RegistrationPage />,
+			// 	action: registrationAction,
+			// },
+			// {
+			// 	path: 'login',
+			// 	element: <LoginPage />,
+			// 	action: loginAction,
+			// },
+			// {
+			// 	path: 'logout',
+			// 	action: logOut,
+			// },
 		],
 	},
 ]);

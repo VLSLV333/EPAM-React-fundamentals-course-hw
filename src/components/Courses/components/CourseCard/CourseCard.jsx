@@ -43,7 +43,7 @@ const CourseCard = ({
 				}
 				<p>
 					<b>Duration: </b>
-					{`${durationObject.hours}:${durationObject.minutes} hours`}
+					{`${durationObject.hours}:${durationObject.prettyMinutes} ${durationObject.stringAfterDuration}`}
 				</p>
 				<p>
 					<b>Created:</b> {creationFormated}

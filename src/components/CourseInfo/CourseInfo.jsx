@@ -11,7 +11,7 @@ const CoursesInfo = ({ dynamicId }) => {
 	const { title, description, id, duration, creationDate, authors } =
 		mockedCoursesList.filter((cour) => cour.id === dynamicId)[0];
 
-	const { hours, minutes } = pipeDuration(duration);
+	const { hours, prettyMinutes, stringAfterDuration } = pipeDuration(duration);
 	const creationFormated = creationDateFormater(creationDate);
 	const authorsArray = getAuthorsNamesArray(authors);
 
@@ -31,7 +31,7 @@ const CoursesInfo = ({ dynamicId }) => {
 						</p>
 						<p>
 							<b>Duration: </b>
-							{`${hours}:${minutes} hours`}
+							{`${hours}:${prettyMinutes} ${stringAfterDuration}`}
 						</p>
 						<p>
 							<b>Created: </b>

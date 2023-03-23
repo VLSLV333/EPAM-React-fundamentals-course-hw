@@ -11,7 +11,10 @@ const Main = () => {
 				this dummyPage:) But you still can go to pages which are main focus of
 				this course using this links:
 			</p>
-			<Link to={'/registration'} className={style.block}>
+			{/* <Link to={'/registration'} className={style.block}>
+				Register
+			</Link> */}
+			<Link to={'/'} className={style.block}>
 				Register
 			</Link>
 			<Link to={'/courses'}>Courses</Link>
