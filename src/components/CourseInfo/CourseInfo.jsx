@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import { mockedCoursesList } from '../../constants';
-import pipeDuration from '../../helpers/pipeDuration';
 import getAuthorsNamesArray from '../../helpers/getAuthorsNamesArray';
 import creationDateFormater from '../../helpers/creationDateFormater';
+import pipeDuration from '../../helpers/pipeDuration';
+
+import { mockedCoursesList } from '../../constants';
 
 import style from './CoursesInfo.module.css';
 
@@ -11,7 +12,7 @@ const CoursesInfo = ({ dynamicId }) => {
 	const { title, description, id, duration, creationDate, authors } =
 		mockedCoursesList.filter((cour) => cour.id === dynamicId)[0];
 
-	const { hours, minutes } = pipeDuration(duration);
+	const { hours, prettyMinutes, stringAfterDuration } = pipeDuration(duration);
 	const creationFormated = creationDateFormater(creationDate);
 	const authorsArray = getAuthorsNamesArray(authors);
 
@@ -31,7 +32,7 @@ const CoursesInfo = ({ dynamicId }) => {
 						</p>
 						<p>
 							<b>Duration: </b>
-							{`${hours}:${minutes} hours`}
+							{`${hours}:${prettyMinutes} ${stringAfterDuration}`}
 						</p>
 						<p>
 							<b>Created: </b>

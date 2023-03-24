@@ -4,5 +4,13 @@ export default function pipeDuration(totalMinutes) {
 	if (hours < 10) {
 		hours = '0' + hours;
 	}
-	return { hours, minutes };
+
+	let minuteOrMinutes = hours === '00' && minutes === 1 ? 'minute' : 'minutes';
+	const stringAfterDuration = `${
+		hours === '00' ? minuteOrMinutes : hours === '01' ? 'hour' : 'hours'
+	}`;
+
+	let prettyMinutes = minutes.toString().length === 1 ? '0' + minutes : minutes;
+
+	return { hours, prettyMinutes, stringAfterDuration };
 }

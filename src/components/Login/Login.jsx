@@ -1,12 +1,10 @@
 import { Form, NavLink, useLocation, useActionData } from 'react-router-dom';
-
 import { useState } from 'react';
 
 import Input from '../../common/Input/Input';
+import Button from '../../common/Button/Button';
 
 import style from './Login.module.css';
-
-import Button from '../../common/Button/Button';
 
 const Login = () => {
 	const actionData = useActionData();

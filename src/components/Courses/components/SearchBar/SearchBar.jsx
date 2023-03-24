@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Button from '../../../../common/Button/Button';
 import Input from '../../../../common/Input/Input';
+
 import { searchBarButtonText } from '../../../../constants';
 
 import style from './SearchBar.module.css';

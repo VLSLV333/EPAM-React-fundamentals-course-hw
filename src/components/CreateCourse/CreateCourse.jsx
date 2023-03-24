@@ -1,10 +1,15 @@
 import { useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
+
 import useInput from '../../hooks/use-input';
 
 import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
+
+import pipeDuration from '../../helpers/pipeDuration';
+import dateGenerator from '../../helpers/dateGenerator';
+import removeDuplicates from '../../helpers/removeDuplicates';
+
 import {
 	mockedAuthorsList,
 	mockedCoursesList,
@@ -13,9 +18,6 @@ import {
 	addAuthorButtonText,
 	removeAuthorButtonText,
 } from '../../constants';
-import pipeDuration from '../../helpers/pipeDuration';
-import dateGenerator from '../../helpers/dateGenerator';
-import removeDuplicates from '../../helpers/removeDuplicates';
 
 import style from './CreateCourse.module.css';
 
@@ -141,21 +143,6 @@ const CreateCourse = () => {
 	};
 	let authorNameValid = authorNameInput.length > 1;
 	let authorNameHasError = !authorNameValid && authorNameTouched;
-
-	const stringAfterDuration = durationConvertedObject
-		? `${
-				durationConvertedObject.hours === '00'
-					? 'minutes'
-					: durationConvertedObject.hours === '01'
-					? 'hour'
-					: 'hours'
-		  }`
-		: 'hours';
-	let prettyMinutes = durationConvertedObject
-		? durationConvertedObject.minutes.toString().length === 1
-			? '0' + durationConvertedObject.minutes
-			: durationConvertedObject.minutes
-		: '';
 
 	return (
 		<form className={style.form} onSubmit={formHandler}>
@@ -283,10 +270,10 @@ const CreateCourse = () => {
 					Duration:
 					<b>
 						{durationConvertedObject
-							? ` ${durationConvertedObject.hours}:${prettyMinutes} `
+							? ` ${durationConvertedObject.hours}:${durationConvertedObject.prettyMinutes} `
 							: ' 00:00 '}
 					</b>
-					{stringAfterDuration}
+					{durationConvertedObject?.stringAfterDuration || 'hours'}
 				</p>
 			</fieldset>
 		</form>

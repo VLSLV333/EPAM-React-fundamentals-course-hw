@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 
-import { courseCardButtonText } from '../../../../constants';
-
 import Button from '../../../../common/Button/Button';
+
 import pipeDuration from '../../../../helpers/pipeDuration';
 import creationDateFormater from '../../../../helpers/creationDateFormater';
 import getAuthorsNamesArray from '../../../../helpers/getAuthorsNamesArray';
+
+import { courseCardButtonText } from '../../../../constants';
 
 import style from './CourseCard.module.css';
 
@@ -43,7 +44,7 @@ const CourseCard = ({
 				}
 				<p>
 					<b>Duration: </b>
-					{`${durationObject.hours}:${durationObject.minutes} hours`}
+					{`${durationObject.hours}:${durationObject.prettyMinutes} ${durationObject.stringAfterDuration}`}
 				</p>
 				<p>
 					<b>Created:</b> {creationFormated}
