@@ -14,9 +14,7 @@ export function checkIfAuthentificated() {
 	const { token } = getAuthInfo();
 
 	if (!token) {
-		return redirect(
-			'/login?message=You need to log in, to have access to that page'
-		);
+		return redirect('/login?message=You need to log in :)');
 	}
 
 	return token;
